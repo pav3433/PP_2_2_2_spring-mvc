@@ -13,7 +13,8 @@ public class CarsController {
     CarDao carDao;
 
     @GetMapping(value = "/cars")
-    public void printCars(@RequestParam(value = "count", required = false, defaultValue = "5") Integer count, ModelMap modelMap) {
+    public String printCars(@RequestParam(value = "count", required = false, defaultValue = "5") Integer count, ModelMap modelMap) {
         modelMap.addAttribute("cars", carDao.getCars(count));
+        return "cars";
     }
 }
